@@ -5,3 +5,7 @@ Will ommit some games if the number of player is odd or even.
 
 TO DO:
 + Add functionality for filtering drawing specific games
++ Package app into executable
+
+DONE:
++ ~~GUI~~
