@@ -1,3 +1,8 @@
+"""
+    Data - Curated list of my groups favorite games
+    format (name, min players, max players, pack, drawing)
+"""
+
 Games = [
     ("Earwax", 3, 8, "Pack 2", False),
     ("Tee KO", 3, 8, "Pack 3", True),
