@@ -3,6 +3,7 @@
 """
 
 import os
+import sys
 import random
 import customtkinter
 from tkinter import BitmapImage
@@ -15,6 +16,7 @@ class App(customtkinter.CTk):
     def __init__(self):
         super().__init__()
 
+        # ICON
         try:
             from ctypes import windll
             myappid = "mycompany.myproduct.subproduct.version"
@@ -22,7 +24,7 @@ class App(customtkinter.CTk):
         except ImportError:
             pass
 
-        self.iconbitmap(r"D:\DEV\UTILS\jackbox games\icon.ico")
+        self.iconbitmap(self.resource_path("icon.ico"))
 
         # Config window
         self.title("Jackbox games")
@@ -44,15 +46,33 @@ class App(customtkinter.CTk):
         self.output = customtkinter.CTkLabel(self, text=" NONE ")
         self.output.grid(row=2, column=0, padx=10, pady=10, sticky="")
 
+    def resource_path(self, relative_path):
+        """ Get absolute path to resource, works for dev and for PyInstaller """
+        try:
+            # PyInstaller creates a temp folder and stores path in _MEIPASS
+            base_path = sys._MEIPASS2
+        except Exception:
+            base_path = os.path.abspath(".")
+
+        return os.path.join(base_path, relative_path)
+
     def show_game(self):
-        numPlayers = int(self.entry.get())
+        """Button logic"""
+        try:
+            numPlayers = int(self.entry.get())
+        except ValueError:
+            self.output.configure(text="INVALID INPUT")
+        
+        if numPlayers > 10:
+            raise Exception(self.output.configure(text="INVALID INPUT"))
+
         game = self.ChooseGame(numPlayers)
         game_name = game[0] + " " + "(" + game[3] + ")"
         self.output.configure(text=f"{game_name}")
 
 
     def ChooseGame(self, numPlayers, *drawing):
-
+        """Game picker logic, returns (name, min numPlayer, max numPlayer, pack number, isDrawing)"""
         game_list = []
         even_players = False
 
