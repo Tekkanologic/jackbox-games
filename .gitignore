@@ -164,3 +164,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 __pycache__/games.cpython-310.pyc
+Jackbox_installer_inno.iss
+JackboxGamePicker_WINDOWS_v1.0.exe
