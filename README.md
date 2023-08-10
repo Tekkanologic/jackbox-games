@@ -15,7 +15,10 @@ TO DO:
 + Add functionality for filtering drawing specific games
 + Improve UI design
 + Settings and preferences
-+ Add more games to game list with future jackbox releases
++ Add more games to game list with future jackbox releases (Jackbox pack 10 oct 2023)
++ Add functionality to automatically open game from app
+  + input .exe/steam path in the settings menu
+  + optionally scan drives for jackbox.exe
 
 ---
 ## Future work
